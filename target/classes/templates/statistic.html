@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Statistic</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+</head>
+<body>
+<div class="row justify-content-center">
+    <div class="col-10 m-3">
+        <img src="/images/aero3.jpg" class="img-fluid"></div>
+</div>
+<div class="row justify-content-center">
+    <div class="col-11 m-3">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link" href="/hello">MAIN</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/statistic">STATISTIC</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<p class="h3 m-3" align="center">Statistic of queries</p>
+<div class="row justify-content-center">
+    <div class="col-11">
+        <table class="table table-striped">
+            <tr>
+                <th></th>
+                <th>Request</th>
+                <th>Airport</th>
+                <th>Date</th>
+            </tr>
+            <tbody id="myTable">
+            </tbody>
+        </table>
+    </div>
+</div>
+<script>
+    let jsonObj = "[[${finalJsonToHtml}]]"
+    console.log(jsonObj);
+    myJsonStr = jsonObj.replaceAll('&quot;', '\"');
+
+    myArray = JSON.parse(myJsonStr);
+    console.log(myArray)
+    buildTable(myArray)
+
+    function buildTable(data) {
+        var table = document.getElementById('myTable')
+        for (var i = 0; i < data.length; i++) {
+            var row = `<tr>
+							<td>${data[i].id}</td>
+							<td>${data[i].searchRequest}</td>
+							<td>${data[i].airportName}</td>
+							<td>${data[i].data}</td>
+
+					  </tr>`
+            table.innerHTML += row
+        }
+    }
+</script>
+</body>
+</html>
