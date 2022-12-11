@@ -1,0 +1,21 @@
+THIS SPRING APP ALLOWS YOU TO RECEIVE CURRENT INFORMATION ABOUT ARRIVALS AND DEPARTURES OF ANY AIRPORT IN THE WORLD.
+IT IS NECESSARY TO ENTER THE NAME OF THE CITY OR AIRPORT IN THE SEARCH WINDOW. AFTER THIS, IF ONE AIRPORT IS FOUND FOR THIS REQUEST, THE TABLE WITH DEPARTING FLIGHTS WILL IMMEDIATELY BE DISPLAYED. FURTHER WITH THE HELP OF RADIO BUTTON YOU CAN SEE ARRIVAL FLIGHTS.
+IF SEVERAL AIRPORTS ARE FOUND ON REQUEST, THEN IN THE APPEARED DOWN-DOWN LIST, YOU CAN SELECT THE REQUIRED AIRPORT AND THEN ALSO CHOOSE THE ARRIVAL/DEPARTURE DIRECTION.
+ALSO ON THE STATISTICS PAGE YOU CAN SEE DATA ON ALL SEARCH REQUESTS AND SELECTED AIRPORTS AND REQUEST TIME.
+YOU CAN LOGIN TO THE WEB APP ONLY USING THE PASSWORD.
+THE APPENDIX IS WRITTEN IN TWO OPTIONS AT SPRING MVC AND SPRING BOOT
+DURING WRITING THE APP, THE FOLLOWING TECHNOLOGIES WERE INVOLVED:
+JAVA SPRING BOOT
+SPRING JBA
+SPRING SECURITY
+JAVA SCRIPT
+JSON
+API Aerodatabox
+BOOTSTRAP
+
+
+ЭТО СПРИНГ ПРИЛОЕЖНИЕ ПОЗВОЛЯЕТ ПОЛУЧАТЬ ТЕКУЩАЮ ИНФОРМАЦИЮ О ПРИЛЕТАЮЩИХ И УЛЕТАЮЩИХ РЕЙСАХ ЛЮБОГО АЭРОПОРТА МИРА.
+НЕОБХОДИМО ВВЕСТИ В ОКНО ПОИСКА НАЗВАНИЕ ГОРОДА ИЛИ АЭРОПОРТА. ПОСЛЕ ЭТОГО ЕСЛИ ПО ДАННОМУ ЗАПРОСУ БУДЕТ НАЙДЕН ОДИН АЭРОПОРТ, ТО СРАЗУ ВЫВЕДЕТСЯ ТАБЛИЦА С ВЫЛЕТАЮЩИМИ РЕЙСАМИ. ДАЛЕЕ С ПОМОЩЬЮ РАДИО БАТТОН МОЖНО ПОСМОТРЕТЬ ПРИЛЕТАЮЩИЕ РЕЙСЫ.
+ЕСЛИ ПО ЗАПРОСУ БУДЕТ НАЙДЕНО НЕСКОЛЬКО АЭРОПОРТОВ, ТО В ПОЯВИВШЕМСЯ РАСКРЫВАЮЩЕМСЯ СПИСКЕ, МОЖНО ВЫБРАТЬ НУЖНЫЙ АЭРОПОРТ И ДАЛЕЕ ТАК ЖЕ ВЫБРАТЬ НАПРАВЛЕНИЕ ПРИБЫТИЕ/ОТБЫТИЕ.
+ТАК ЖЕ НА СТРАНИЦЕ СТАТИСТИКА МОЖНО УВИДЕТЬ ДАННЫЕ ПО ВСЕМ ПОИСКОВЫМ ЗАПРОСАМ И ВЫБРАННЫМ АЭРОПОРТАМ И ВРЕМЕНИ ЗАПРОСА.
+ВОЙТИ В ВЕБ ПРИЛОЖЕНИЕ МОЖНО ТОЛЬКО ИСПОЛЬЗУЯ ПАРОЛЬ.
