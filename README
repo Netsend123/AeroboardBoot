@@ -6,13 +6,16 @@ YOU CAN LOGIN TO THE WEB APP ONLY USING THE PASSWORD.
 THE APPENDIX IS WRITTEN IN TWO OPTIONS AT SPRING MVC AND SPRING BOOT
 DURING WRITING THE APP, THE FOLLOWING TECHNOLOGIES WERE INVOLVED:
 JAVA SPRING BOOT
-SPRING JBA
+SPRING MVC
+HIBERNATE
+SPRING JPA
 SPRING SECURITY
+SQL Postgres
 JAVA SCRIPT
 JSON
-API Aerodatabox
+REST API Aerodatabox
 BOOTSTRAP
-
+HEROKU
 
 ЭТО СПРИНГ ПРИЛОЕЖНИЕ ПОЗВОЛЯЕТ ПОЛУЧАТЬ ТЕКУЩАЮ ИНФОРМАЦИЮ О ПРИЛЕТАЮЩИХ И УЛЕТАЮЩИХ РЕЙСАХ ЛЮБОГО АЭРОПОРТА МИРА.
 НЕОБХОДИМО ВВЕСТИ В ОКНО ПОИСКА НАЗВАНИЕ ГОРОДА ИЛИ АЭРОПОРТА. ПОСЛЕ ЭТОГО ЕСЛИ ПО ДАННОМУ ЗАПРОСУ БУДЕТ НАЙДЕН ОДИН АЭРОПОРТ, ТО СРАЗУ ВЫВЕДЕТСЯ ТАБЛИЦА С ВЫЛЕТАЮЩИМИ РЕЙСАМИ. ДАЛЕЕ С ПОМОЩЬЮ РАДИО БАТТОН МОЖНО ПОСМОТРЕТЬ ПРИЛЕТАЮЩИЕ РЕЙСЫ.

@@ -1,14 +1,12 @@
 package aero.board;
 
-import aero.board.dao.SearchDAO;
+
 import aero.board.model.Airport;
 import io.restassured.path.json.JsonPath;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -21,11 +19,7 @@ public class SearchAeroport {
 
     public List<Airport> airportList = new ArrayList<>();
     public String icao;
-    private final SearchDAO searchDAO;
-    @Autowired
-    public SearchAeroport(SearchDAO searchDAO) {
-        this.searchDAO = searchDAO;
-    }
+
     public void searchAeroportToAPI(String city) { //формируем на основе полученой строки поиска Api запрос, на поиск нужного аэропорта
         java.net.http.HttpRequest request;
 

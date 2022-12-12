@@ -34,7 +34,7 @@ public class FirstController {
 
 
 
-    @GetMapping("/hello")
+    @GetMapping("/index")
     public String helloPage(@RequestParam(value = "city", required = false) String city,
                             @RequestParam(value = "icao", required = false) String icao,
                             @RequestParam(value = "inout", required = false) String inout, Model model) {
