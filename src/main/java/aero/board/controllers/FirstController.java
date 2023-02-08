@@ -7,6 +7,8 @@ import aero.board.SearchAeroport;
 import aero.board.model.Airport;
 import aero.board.model.DbObject;
 import aero.board.sevices.SearchService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +22,7 @@ import java.util.List;
 @Controller
 
 public class FirstController {
+    Logger logger = LoggerFactory.getLogger(FirstController.class);
     SearchAeroport searchAeroport;
     List<Airport> airportsArray = new ArrayList<>();
     ApiRequestAeroportLines apiRequestAeroportLines = new ApiRequestAeroportLines();
@@ -44,7 +47,7 @@ public class FirstController {
         String airportName = "";
         String listvisible = "hidden";
         String tableRadioVicible = "hidden";
-
+        //logger.error("Erroe");
         if (city != null) {
 
             cityDb = city;
