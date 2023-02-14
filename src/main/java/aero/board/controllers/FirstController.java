@@ -67,7 +67,7 @@ public class FirstController {
                 tableRadioVicible = "visible";
                 if (apiRequestAeroportLines.dataNotFound) {
                     err = "Airport " + airportsArray.get(0).getName() + " data not found!";
-
+                    apiRequestAeroportLines.dataNotFound = false;
                 } else {
                     finalJsonToHtml = jsonParsingFlifgtList.parse(apiRequestAeroportLines.responseApiAeroLines);
                     airportName = airportsArray.get(0).getName() + " |  DEPARTURES  |  local time: " + apiRequestAeroportLines.timeRange.currentTime;
@@ -81,6 +81,7 @@ public class FirstController {
             tableRadioVicible = "visible";
             if (apiRequestAeroportLines.dataNotFound) {
                 err = "Airport data not found!";
+                apiRequestAeroportLines.dataNotFound = false;
             } else {
                 finalJsonToHtml = new JsonParsingFlifgtList().parse(apiRequestAeroportLines.responseApiAeroLines);
                 for (Airport airport : airportsArray) {

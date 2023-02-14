@@ -44,7 +44,7 @@ public class SearchAeroport {
         return icao;
     }
 
-    public void parse(String city) { //парсинг json ответа. на выходе получаем код icao нужного аэропорта для дальнейшей вставки в Api запрос списка рейсов по этому аэропрту
+    public void parse(String city) { //парсинг json ответа. на выходе список аэропортов airportList по этому запросу для дальнейшего выбора или вставки (если аэропорт один) в Api запрос списка рейсов по этому аэропрту
         searchAeroportToAPI(city);
         JSONParser jsonParser = new JSONParser();
         JSONObject jsonObject = null;
@@ -55,7 +55,7 @@ public class SearchAeroport {
         }
         int i = 0;
 
-        while (JsonPath.from(String.valueOf(jsonObject)).getString("items[" + i + "].name") != null) { //формируем список аэропортов из результатов поиска
+        while (JsonPath.from(String.valueOf(jsonObject)).getString("items[" + i + "].name") != null) { //формируем список аэропортов из полученного json ответа
             String name = (JsonPath.from(String.valueOf(jsonObject)).getString("items[" + i + "].name"));
             String icao = (JsonPath.from(String.valueOf(jsonObject)).getString("items[" + i + "].icao"));
             airportList.add(new Airport(name, icao));
