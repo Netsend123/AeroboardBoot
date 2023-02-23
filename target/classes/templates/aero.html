@@ -11,17 +11,19 @@
 </head>
 <body>
 <div class="row justify-content-center">
-<div class="col-11 m-3">
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/index">MAIN</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link"  href="/statistic">STATISTIC</a>
-        </li>
-    </ul>
+    <div class="col-11 m-3">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/index">MAIN</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/statistic">STATISTIC</a>
+            </li>
+        </ul>
+    </div>
 </div>
-</div>
+
+
 <div class="row justify-content-center">
     <div class="col-11">
         <form class="form-control p-2 mt-5" method="get" accept-charset="utf-8">
@@ -68,7 +70,10 @@
     <div class="col-11">
         <table th:if="${tableRadioVicible == 'visible'}" class="table table-striped">
             <tr>
-                <th>Time</th>
+                <th>Time<br>Scheduled</th>
+                <th>TimeActual/<br>Expect(delay)</th>
+                <th>Duration<br>Scheduled</th>
+                <th>Duration<br>Actual</th>
                 <th>City</th>
                 <th>Company</th>
                 <th>Airplane</th>
@@ -93,7 +98,10 @@
         var table = document.getElementById('myTable')
         for (var i = 0; i < data.length; i++) {
             var row = `<tr>
+							<td>${data[i].timeScheduled}</td>
 							<td>${data[i].time}</td>
+							<td>${data[i].timeDuration}</td>
+							<td>${data[i].timeDurationActual}</td>
 							<td>${data[i].aeroport}</td>
 							<td>${data[i].company}</td>
 							<td>${data[i].aircraft}</td>
@@ -107,9 +115,19 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
         crossorigin="anonymous"></script>
+<br>
+<div class="row justify-content-center">
+    <div class="col-10">
+        <p>The service will allow you to get up-to-date information about the arrival and departure of flights from most airports in the world. within 12 hours (-4 hours, + 8 hours from the current time of the requested airport). Also some additional information, such as estimated flight time, actual flight time, scheduled departure/arrival time, actual departure/arrival time, delay time, aircraft model. Since the project is educational, the processing time of information in some cases can reach 10-15 seconds. To obtain information, an open AeroDataBox API is used in which information is not always present in full.</p>
+        <br>
+        <p>Сервис позволят получить актуальную информацию о прилете, отлете рейсов большинства аэропортов мира. в течении 12 часов (-4 часа, + 8 часов от текущего времени запрашиваемого аэропотра). Так же некоторую дополнительную информацию, такую как расчетное время полета, фактическое время полета, время вылета/прилета по расписанию, время вылета/прилета фактическое, время задержки, модель самолета. Так как проект учебный время обработки информации в некоторых случаях может достигать 10-15 секунд. Для получения информации используется открытый AeroDataBox API в котором информация присутствует не всегда в полном объеме. </p>
+    </div>
+</div>
 <div class="row justify-content-center">
     <div class="col-10 m-3">
         <img src="/images/aero3.jpg" class="img-fluid"></div>
 </div>
+<br>
+
 </body>
 </html>
