@@ -58,8 +58,8 @@
         <form th:if="${tableRadioVicible == 'visible'}" method="get" accept-charset="utf-8">
 
             <label class="m-3" name="inout">Choose a direction</label>
-            <input type="radio" name="inout" value="departures" checked> Departures
-            <input type="radio" name="inout" value="arrivals"> Arrivals
+            <input type="radio" name="inout" value="departures" th:checked="${!radioButtonMemory}"> Departures
+            <input type="radio" name="inout" value="arrivals" th:checked="${radioButtonMemory}"> Arrivals
             <input class="btn btn-outline-primary m-3" type="submit" value="submit">
         </form>
     </div>
@@ -118,9 +118,9 @@
 <br>
 <div class="row justify-content-center">
     <div class="col-10">
-        <p>The service will allow you to get up-to-date information about the arrival and departure of flights from most airports in the world. within 12 hours (-4 hours, + 8 hours from the current time of the requested airport). Also some additional information, such as estimated flight time, actual flight time, scheduled departure/arrival time, actual departure/arrival time, delay time, aircraft model. Since the project is educational, the processing time of information in some cases can reach 10-15 seconds. To obtain information, an open AeroDataBox API is used in which information is not always present in full.</p>
+        <p>The service will allow you to get up-to-date information about the arrival and departure of flights from most airports in the world within 12 hours (-4 hours, + 8 hours from the current time of the requested airport). Also some additional information, such as estimated flight time, actual flight time, scheduled departure/arrival time, actual departure/arrival time, delay time, aircraft model. Since the project is educational, the processing time of information in some cases can reach 10-15 seconds. To obtain information, an open AeroDataBox API is used in which information is not always present in full.</p>
         <br>
-        <p>Сервис позволят получить актуальную информацию о прилете, отлете рейсов большинства аэропортов мира. в течении 12 часов (-4 часа, + 8 часов от текущего времени запрашиваемого аэропотра). Так же некоторую дополнительную информацию, такую как расчетное время полета, фактическое время полета, время вылета/прилета по расписанию, время вылета/прилета фактическое, время задержки, модель самолета. Так как проект учебный время обработки информации в некоторых случаях может достигать 10-15 секунд. Для получения информации используется открытый AeroDataBox API в котором информация присутствует не всегда в полном объеме. </p>
+        <p>Сервис позволят получить актуальную информацию о прилете, вылете рейсов большинства аэропортов мира, в диапазоне 12 часов (-4 часа, + 8 часов от текущего времени запрашиваемого аэропорта). Сервис позволяет получичть некоторую дополнительную информацию, такую как расчетное время полета, фактическое время полета, время вылета/прилета по расписанию, время вылета/прилета фактическое, время задержки, модель самолета. Так как проект учебный время обработки информации в некоторых случаях может достигать 10-15 секунд. Для получения информации используется открытый AeroDataBox API в котором второстепенная информация присутствует не всегда в полном объеме. </p>
     </div>
 </div>
 <div class="row justify-content-center">

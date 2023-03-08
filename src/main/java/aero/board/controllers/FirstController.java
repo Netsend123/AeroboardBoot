@@ -7,6 +7,7 @@ import aero.board.SearchAeroport;
 import aero.board.model.Airport;
 import aero.board.model.DbObject;
 import aero.board.sevices.SearchService;
+import antlr.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +48,7 @@ public class FirstController {
         String airportName = "";
         String listvisible = "hidden";
         String tableRadioVicible = "hidden";
+        Boolean radioButtonMemory = false;
         //logger.error("Erroe");
         if (city != null) {
 
@@ -95,6 +97,7 @@ public class FirstController {
         }
         if (inout != null && inout.equals("arrivals") && apiRequestAeroportLines.responseApiAeroLines != null && !apiRequestAeroportLines.dataNotFound) {
             tableRadioVicible = "visible";
+            radioButtonMemory = true;
             JsonParsingFlifgtList jsonParsingFlifgtList = new JsonParsingFlifgtList();
             jsonParsingFlifgtList.setInOut("arrivals");
             finalJsonToHtml = jsonParsingFlifgtList.parse(apiRequestAeroportLines.responseApiAeroLines);
@@ -103,6 +106,7 @@ public class FirstController {
         if (inout != null && inout.equals("departures") && apiRequestAeroportLines.responseApiAeroLines != null && !apiRequestAeroportLines.dataNotFound) {
             JsonParsingFlifgtList jsonParsingFlifgtList = new JsonParsingFlifgtList();
             tableRadioVicible = "visible";
+            radioButtonMemory = false;
             jsonParsingFlifgtList.setInOut("departures");
             finalJsonToHtml = jsonParsingFlifgtList.parse(apiRequestAeroportLines.responseApiAeroLines);
             airportName = airportNameForHtml + " |  DEPARTURES  |  local time: " + apiRequestAeroportLines.timeRange.currentTime;
@@ -112,6 +116,7 @@ public class FirstController {
         model.addAttribute("airportName", airportName);
         model.addAttribute("listvisible", listvisible);
         model.addAttribute("tableRadioVicible", tableRadioVicible);
+        model.addAttribute("radioButtonMemory", radioButtonMemory);
         return "aero";
     }
 
@@ -122,7 +127,19 @@ public class FirstController {
     }
 
     @GetMapping("/statistic")
-    public String newPerson(Model model) {
+    public String newPerson(@RequestParam(value = "idDelete", required = false) String idDelete,
+                            @RequestParam(value = "idEdit", required = false) String idEdit,
+                            Model model) {
+        if (idDelete!=null&&idDelete.matches("-?\\d+(\\.\\d+)?")){
+
+            searchService.delete(Integer.parseInt(idDelete));
+        }
+        if (idEdit!=null){
+            String airportEdit = idEdit.split(" ")[1];
+            idEdit = idEdit.split(" ")[0];
+            System.out.println(idEdit+" "+airportEdit);
+            searchService.update(Integer.parseInt(idEdit), airportEdit);
+        }
         JsonFromSearchList json = new JsonFromSearchList();
         model.addAttribute("finalJsonToHtml", json.parse(searchService.getLastSeaecrchQueries()));
         return "statistic";

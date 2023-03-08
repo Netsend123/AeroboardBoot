@@ -19,12 +19,12 @@ public class JsonParsingFlifgtList {
     }
 
     public String dateCorrect(String time) {
-        time = time.split("\\+")[0]; // убираем часовой пояс и год из даты
+        time = time.split("\\+")[0]; // убираем часовой пояс и год из строки с датой
         time = time.split(" ")[1];
         return time;
     }
 
-    public long timeDiff (String timeStart, String timeFinish){
+    public long timeDiff (String timeStart, String timeFinish){ // вычиление разницы в минутах между двумя значениями времени
         String pattern = "yyyy-MM-dd HH:mm";
         SimpleDateFormat sdf = new SimpleDateFormat(pattern);
         Date date1 = null;
@@ -35,12 +35,11 @@ public class JsonParsingFlifgtList {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-        // получаем разницу между двумя датами в минутах
         long elapsedms = date1.getTime() - date2.getTime();
         long diff = TimeUnit.MINUTES.convert(elapsedms, TimeUnit.MILLISECONDS);
         return diff;
     }
-    public String flightDuration(String takeOf, String takeOn) {
+    public String flightDuration(String takeOf, String takeOn) { // вычисление продолжительности полета
         if (takeOf == null || takeOn == null) return "";
         takeOf = takeOf.substring(0, takeOf.length() - 1);
         takeOn = takeOn.substring(0, takeOn.length() - 1);
@@ -50,7 +49,7 @@ public class JsonParsingFlifgtList {
         return hours + "h" + min + "m";
     }
 
-    public String delay(String timeScheduled, String timeReal) {
+    public String delay(String timeScheduled, String timeReal) { // вычисление задержки прилета/вылета
         timeScheduled = timeScheduled.split("\\+")[0];
         timeReal = timeReal.split("\\+")[0];
         long diff = timeDiff(timeReal,timeScheduled);
@@ -61,7 +60,7 @@ public class JsonParsingFlifgtList {
         return stdiff;
     }
 
-    public String parse(String jsonAeroLine) {
+    public String parse(String jsonAeroLine) { // создание нового json для вывода в таблицу в браузер
         long start = System.currentTimeMillis();
         System.out.println(jsonAeroLine);
         JSONParser jsonParser = new JSONParser();
@@ -77,7 +76,7 @@ public class JsonParsingFlifgtList {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        JSONArray arrivals = (JSONArray) jsonObject.get("arrivals");
+        JSONArray arrivals = (JSONArray) jsonObject.get("arrivals"); // из одного json объекта получаем 2 отдельных массива
         JSONArray departures = (JSONArray) jsonObject.get("departures");
 
         int i = 0;
@@ -86,13 +85,12 @@ public class JsonParsingFlifgtList {
 
         if (inOut.equals("arrivals")) {
             while (i < arrivals.size()) {
-                long st = System.currentTimeMillis();
                 JSONObject obj = new JSONObject();
                 JSONObject resive = (JSONObject) arrivals.get(i);
 
-                String timeActual = (JsonPath.from(String.valueOf(resive)).getString("arrival.actualTimeLocal"));
-                String timeScheduled = (JsonPath.from(String.valueOf(resive)).getString("arrival.scheduledTimeLocal"));
-                if (timeActual != null) {
+                String timeActual = (JsonPath.from(String.valueOf(resive)).getString("arrival.actualTimeLocal")); // время призелмения фактическое
+                String timeScheduled = (JsonPath.from(String.valueOf(resive)).getString("arrival.scheduledTimeLocal")); // время приземления по расписанию
+                if (timeActual != null) { //если самолет приземлися то вычисляем разницу мжеду расписанием и фактическим
 
                     timeActual = dateCorrect(timeActual) + "(" + delay(timeActual, timeScheduled) + ")";
                 }
@@ -121,16 +119,11 @@ public class JsonParsingFlifgtList {
                 listOfBoard.add(i, obj);
 
                 i++;
-                long finish = System.currentTimeMillis();
-                long elapsed = finish - st;
-                System.out.println(elapsed);
-
             }
         }
         if (inOut.equals("departures")) {
 
             while (i < departures.size()) {
-                long st = System.currentTimeMillis();
                 JSONObject obj = new JSONObject();
                 JSONObject resive = (JSONObject) departures.get(i);
 
@@ -149,32 +142,19 @@ public class JsonParsingFlifgtList {
                 String timeDurationActual = "n/a";
                 timeScheduled = dateCorrect(timeScheduled);
 
-                //String time = (JsonPath.from(String.valueOf(resive)).getString("departure.actualTimeLocal"));
-                //String timeArrival = (JsonPath.from(String.valueOf(resive)).getString("arrival.scheduledTimeLocal"));
-                String aeroport = (JsonPath.from(String.valueOf(resive)).getString("arrival.airport.name"));
-                String number = (JsonPath.from(String.valueOf(resive)).getString("number"));
-                String status = (JsonPath.from(String.valueOf(resive)).getString("status"));
-                String company = (JsonPath.from(String.valueOf(resive)).getString("airline.name"));
-                String aircraft = (JsonPath.from(String.valueOf(resive)).getString("aircraft.model"));
-
-
-
                 obj.put("time", timeActual);
                 obj.put("timeScheduled", timeScheduled);
                 obj.put("timeDuration", timeDuration);
                 obj.put("timeDurationActual", timeDurationActual);
-                obj.put("aeroport", aeroport);
-                obj.put("number", number);
-                obj.put("status", status);
-                obj.put("company", company);
-                obj.put("aircraft", aircraft);
+                obj.put("aeroport", JsonPath.from(String.valueOf(resive)).getString("arrival.airport.name"));
+                obj.put("number", JsonPath.from(String.valueOf(resive)).getString("number"));
+                obj.put("status", JsonPath.from(String.valueOf(resive)).getString("status"));
+                obj.put("company", JsonPath.from(String.valueOf(resive)).getString("airline.name"));
+                obj.put("aircraft", JsonPath.from(String.valueOf(resive)).getString("aircraft.model"));
 
                 listOfBoard.add(i, obj);
 
                 i++;
-                long finish = System.currentTimeMillis();
-                long elapsed = finish - st;
-                System.out.println(elapsed);
             }
         }
         long finish = System.currentTimeMillis();

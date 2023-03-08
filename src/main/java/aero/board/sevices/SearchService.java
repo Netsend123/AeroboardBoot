@@ -2,6 +2,7 @@ package aero.board.sevices;
 
 import aero.board.model.DbObject;
 import aero.board.repositories.SearchRepositoriy;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,5 +30,15 @@ public class SearchService {
     @Transactional
     public List<DbObject> getLastSeaecrchQueries() {
         return searchRepositoriy.lastListSearch();
+    }
+    @Transactional
+    public void update(int id, String updateName){
+
+        DbObject dbObjectToUpdate = searchRepositoriy.getReferenceById(id);
+        dbObjectToUpdate.setAirportName(updateName);
+    }
+    @Transactional
+    public void delete(int id){
+        searchRepositoriy.delete(searchRepositoriy.getReferenceById(id));
     }
 }

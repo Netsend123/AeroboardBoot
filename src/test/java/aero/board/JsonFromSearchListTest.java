@@ -18,8 +18,8 @@ class JsonFromSearchListTest {
         list.add(new DbObject("кольцово", "Ekaterinburg, Koltsovo"));
         String st1 = "[{\"searchRequest\":\"кольцово\",\"airportName\":\"Ekaterinburg, Koltsovo\",\"data\":";
         String  st2 = "\"id\":\"0\"}]";
-        String resolt = jsonFromSearchList.parse(list);
-        boolean test = ((resolt.contains(st1))&&(resolt.contains(st2)));
+        String result = jsonFromSearchList.parse(list);
+        boolean test = ((result.contains(st1))&&(result.contains(st2)));
         assertEquals(true, test);
 
     }
